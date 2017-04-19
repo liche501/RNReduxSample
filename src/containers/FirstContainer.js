@@ -3,18 +3,24 @@ import { connect } from 'react-redux'
 import {
   StyleSheet,
   Text,
-  View
+  View,
+  Button,
 } from 'react-native';
 import { getLoginStatus } from '../actions/login.js'
 class FirstContainer extends Component {
 
   componentWillMount() {
-    this.props.getLoginStatus({ "userName": "liche" })
+
   }
   componentWillReceiveProps(nextProps) {
     console.log("componentWillReceiveProps ==>", nextProps.loginStatus)
   }
-
+  _btn1Click = () => {
+    this.props.getLoginStatus({ "userName": "liche" })
+  }
+  _btn2Click = () => {
+    this.props.getLoginStatus({age:"29" })
+  }
   render() {
     return (
       <View style={styles.container}>
@@ -30,7 +36,12 @@ class FirstContainer extends Component {
         </Text>
         <Text>
           {this.props.loginStatus.userName}
+          {this.props.loginStatus.age}
+          
         </Text>
+        <Button title="btn1" onPress={this._btn1Click} />
+        <Button title="btn2" onPress={this._btn2Click} />
+        
       </View>
     );
   }

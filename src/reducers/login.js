@@ -2,7 +2,9 @@ import { handleActions } from 'redux-actions';
 
 const loginReducer = handleActions({
     LOGIN: (state , action) => {
-        return Object.assign({}, state, action.payload);
+        console.log(state,action)
+        // return Object.assign({}, state, action.payload);
+        return {...state,...action.payload}
     },
 }, {});
 
